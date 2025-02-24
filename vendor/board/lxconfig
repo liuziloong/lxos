@@ -1,0 +1,57 @@
+##
+#  Copyright 2023 Andy andrew.lxos@gmail.com
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+##
+
+choice
+	prompt "Board Selection"
+	default BOARD_NUCLEO_STM32F429ZI
+
+	config BOARD_NUCLEO_STM32F429ZI
+		bool "nucleo_stm32f429zi"
+		depends on MCU_STM32F429ZI
+		help
+			The NUCLEO-F429ZI board.
+
+	config BOARD_LM3S6965XXX
+		bool "lm3s6965xxx"
+		depends on MCU_LM3S6965
+		help
+			The LM3S6965xxx board.
+
+endchoice
+
+config BOARD
+	string
+	    default "nucleo_stm32f429zi" if BOARD_NUCLEO_STM32F429ZI
+		default "lm3s6965xxx"   if BOARD_LM3S6965XXX
+
+############################################################
+
+comment "Common Board Options"
+
+config BOARD_HAVE_LEDS
+	bool "Board LED Status Support"
+	default y
+	help
+		Use board LEDs to show LXOS execution state.
+
+############################################################
+
+comment "Board-Specific Options"
+
+if BOARD_NUCLEO_STM32F429ZI
+
+#source "board/nucleo_f429zi/lxconfig"
+endif

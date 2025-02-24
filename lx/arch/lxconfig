@@ -1,0 +1,104 @@
+##
+#  Copyright 2023 Andy andrew.lxos@gmail.com
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+##
+
+
+choice
+	prompt "CPU Architecture"
+	default ARCH_ARM_V7M
+
+	config ARCH_ARM_V7M
+		bool "ARM-V7M"
+		select ARCH_HAVE_STACKCHECK
+		help
+			The ARM-V7M architecture, used by Cortex-M3 and Cortex-M4.
+
+	config ARCH_LINUX
+		bool "Simulation"
+		select ARCH_HAVE_MULTICPU
+		select ARCH_HAVE_TLS
+		select ARCH_HAVE_TICKLESS
+		select ARCH_HAVE_POWEROFF
+		select SERIAL_CONSOLE
+		help
+			Linux user-mode simulation.
+
+endchoice
+
+config ARCH
+	string
+	default "armv7-m" if ARCH_ARM_V7M
+	default "linux"   if ARCH_LINUX
+
+############################################################
+
+config ARCH_TOOLCHAIN_GNU
+	bool "arch toolchain gnu"
+	default n
+
+config ARCH_GNU_NO_WEAKFUNCTIONS
+	bool
+	depends on ARCH_TOOLCHAIN_GNU
+	default n
+	help
+		Disable support for weak functions.
+
+config ARCH_HAVE_MULTICPU
+	bool
+	default n
+
+config ARCH_HAVE_VFORK
+	bool
+	default n
+
+config ARCH_HAVE_MMU
+	bool
+	default n
+
+config ARCH_HAVE_MPU
+	bool
+	default n
+
+config ARCH_HAVE_EXTCLK
+	bool
+	default n
+
+config ARCH_HAVE_POWEROFF
+	bool
+	default n
+
+config ARCH_HAVE_RESET
+	bool
+	default n
+
+config ARCH_USE_MMU
+	bool "Enable MMU"
+	default n
+	depends on ARCH_HAVE_MMU
+	help
+		The architecture supports supports an MMU.  Enable this option in
+		order to enable use of the MMU.  For most architectures, this is
+		not really an option:  It is required to use the MMU.  In those
+		cases, this selection will always be forced.
+
+config ARCH_USE_MPU
+	bool "Enable MPU"
+	default n
+	depends on ARCH_HAVE_MPU
+	help
+		The architecture supports supports an MPU.  Enable this option in
+		order to enable use of the MPU.  For most architectures, this option
+		is enabled by other, platform-specific logic.  In those cases, this
+		selection will always be forced.

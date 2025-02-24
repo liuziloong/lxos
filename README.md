@@ -1,0 +1,28 @@
+
+andrew.lxos@gmail.com
+andy.lxos@outlook.com
+
+Setting:
+
+1 install cutecom or minicom or putty ...
+	"sudo apt-get install cutecom"
+	"sudo apt-get install minicom"
+	"sudo apt-get install putty"
+
+2 install st-link
+	2.1 get stlink form url: https://github.com/texane/stlink
+		"git clone https://github.com/texane/stlink.git"
+	2.2 "sudo apt install libusb-1.0"
+	2.3 follow doc: doc/compiling.md
+
+3 debug with gdb
+	3.1 "sudo st-util"
+	3.2 open another comm, and execute:
+		"arm-none-eabi-gdb lx.elf"
+		"tar extended-remote :4242"
+		"load lx.elf"
+	3.3 reset the chip, and debug as follow:
+		"target extended-remote localhost:4242"
+		"break ***"
+		"..."
+

@@ -1,0 +1,86 @@
+#
+# Automatically generated file; DO NOT EDIT.
+# LXOS/ Configuration
+#
+
+#
+# Arch        Configuration
+#
+CONFIG_ARCH_ARM_V7M=y
+# CONFIG_ARCH_ARM_V8M is not set
+# CONFIG_ARCH_SIM is not set
+CONFIG_ARCH="armv7-m"
+# CONFIG_ARCH_TOOLCHAIN_GNU is not set
+# CONFIG_ARCH_HAVE_MULTICPU is not set
+# CONFIG_ARCH_HAVE_VFORK is not set
+# CONFIG_ARCH_HAVE_MMU is not set
+# CONFIG_ARCH_HAVE_MPU is not set
+# CONFIG_ARCH_HAVE_EXTCLK is not set
+# CONFIG_ARCH_HAVE_POWEROFF is not set
+# CONFIG_ARCH_HAVE_RESET is not set
+
+#
+# MCU         Configuration
+#
+CONFIG_MCU_STM32F429ZI=y
+# CONFIG_MCU_LM3S6965 is not set
+
+#
+# Common MCU Options
+#
+CONFIG_MCU_DRIVER_UART=y
+
+#
+# MCU-Specific Options
+#
+
+#
+# Board       Configuration
+#
+CONFIG_BOARD_NUCLEO_STM32F429ZI=y
+
+#
+# Common Board Options
+#
+CONFIG_BOARD_HAVE_LEDS=y
+
+#
+# Board-Specific Options
+#
+
+#
+# Bootloader  Configuration
+#
+
+#
+# LXOS CORE   Configuration
+#
+
+#
+# CPU Architecture
+#
+
+#
+# Component   Configuration
+#
+CONFIG_COMP_LOG=y
+# CONFIG_COMP_OTA is not set
+# CONFIG_COMP_SENSORS is not set
+CONFIG_COMP_LXSH=y
+
+#
+# Library     Configuration
+#
+
+#
+# Third-party Libs
+#
+
+#
+# Application Configuration
+#
+
+#
+# Test        Configuration
+#
+CONFIG_TEST_ALL=y

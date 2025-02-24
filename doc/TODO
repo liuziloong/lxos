@@ -1,0 +1,25 @@
+LXOS TODO LIST
+2019.01.01
+====================
+
+0. printk
+
+0. building system, like linux
+
+1. lock: mutex sem spinlock waitqueue
+
+2. tick~timer
+
+3. qemu~gdb
+
+4. makefile
+
+5. porting
+
+6. start kernel
+
+====================
+
+1 schedule
+
+	nuttx-linux-posix对比制定

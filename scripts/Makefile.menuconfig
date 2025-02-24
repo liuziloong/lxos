@@ -1,0 +1,3 @@
+
+menuconfig:
+	kconfig-mconf lxconfig

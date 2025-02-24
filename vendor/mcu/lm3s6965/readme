@@ -1,0 +1,5 @@
+
+qemu-system-arm -machine lm3s6965evb -kernel rhino.elf -serial stdio -S -gdb tcp::8888
+
+target remote 10.0.3.15:8888
+

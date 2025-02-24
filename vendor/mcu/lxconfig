@@ -1,0 +1,60 @@
+##
+#  Copyright 2023 Andy andrew.lxos@gmail.com
+#
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+##
+
+choice
+	prompt "MCU Selection"
+	default MCU_STM32F429ZI
+
+	config MCU_STM32F429ZI
+		bool "stm32f429zi"
+		depends on ARCH_ARM_V7M
+		help
+			The STM32F429ZI.
+
+	config MCU_LM3S6965
+		bool "lm3s6965"
+		depends on ARCH_ARM_V7M
+		help
+			The LM3S6965.
+
+endchoice
+
+config MCU
+	string
+	default "stm32f429zi" if MCU_STM32F429ZI
+	default "lm3s6965"    if MCU_LM3S6965
+
+############################################################
+
+comment "Common MCU Options"
+
+config MCU_DRIVER_UART
+    bool "MCU UART Driver Support"
+	default y
+	help
+		MCU supports UART driver.
+
+############################################################
+
+comment "MCU-Specific Options"
+
+if MCU_STM32F429ZI
+source "vendor/mcu/stm32f429zi/lxconfig"
+endif
+
+if MCU_LM3S6965
+#source "vendor/mcu/lm3s6965/lxconfig"
+endif

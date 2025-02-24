@@ -1,0 +1,11 @@
+
+1 编译系统模组选择
+
+  方案一：通过"include ./lx.mk"
+
+  方案二：通过在lx.mk中指定依赖关系
+    A APP可以有多个:app1 + app2                       影响：编译+启动
+    B 中间件有多个：newlibc + cjson + mbedtls + mqtt  影响：编译
+    C 内核和BSP一个：lx + mcu + board                 影响：无
+
+2 内核与应用（）隔离
